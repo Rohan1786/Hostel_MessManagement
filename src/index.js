@@ -29,22 +29,22 @@ app.get('/', (req, res) => {
 
 
 
-// app.get('/home', (req, res) => {
-//     res.render('home')
-// })
+app.get('/home', (req, res) => {
+    res.render('home')
+})
 
 app.post('/signup', async (req, res) => {
     
-    // const data = new LogInCollection({
-    //     name: req.body.name,
-    //     password: req.body.password
-    // })
-    // await data.save()
-
-    const data = {
+    const data = new LogInCollection({
         name: req.body.name,
         password: req.body.password
-    }
+    })
+    await data.save();
+
+    // const data = {
+    //     name: req.body.name,
+    //     password: req.body.password
+    // }
 
     const checking = await LogInCollection.findOne({ name: req.body.name })
 
@@ -80,7 +80,7 @@ app.post('/login', async (req, res) => {
         }
 
 
-    } 
+    }
     
     catch (e) {
 
