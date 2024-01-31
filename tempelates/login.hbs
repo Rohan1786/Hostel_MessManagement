@@ -7,6 +7,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
+<style>
+    a{
+        text-decoration: none;
+       font-size: 22px;
+       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+</style>
 <body>
 
     <h1>Login Form</h1>
@@ -14,14 +21,15 @@
     <form action="/login" method="post" >
         <input placeholder="Name" name="name" type="text">
         <br>
+      
         <input placeholder="Password" name="password" type="password">
         <br>
         <input class="sub" type="submit">
      <h3>Dont have a account ?</h3>
-    <a href="/signup">Create a new account</a>
+   
     </form>
 
 
-    
+     <a href="/signup">Create a new account</a>
 </body>
 </html>

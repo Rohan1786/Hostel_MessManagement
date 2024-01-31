@@ -37,8 +37,10 @@ app.post('/signup', async (req, res) => {
     
     const data = new LogInCollection({
         name: req.body.name,
+        email:req.body.email,
         password: req.body.password
-    })
+       
+    });
     await data.save();
 
     // const data = {
@@ -50,7 +52,7 @@ app.post('/signup', async (req, res) => {
 
    try{
     if (checking.name === req.body.name && checking.password===req.body.password) {
-        res.send("user details already exists")
+        res.render('home')
     }
     else{
         await LogInCollection.insertMany([data])
@@ -77,6 +79,7 @@ app.post('/login', async (req, res) => {
 
         else {
             res.send("incorrect password")
+            
         }
 
 
@@ -84,7 +87,7 @@ app.post('/login', async (req, res) => {
     
     catch (e) {
 
-        res.send("wrong details")
+        res.send("wrong details");
         
 
     }
