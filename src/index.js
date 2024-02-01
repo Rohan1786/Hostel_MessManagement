@@ -8,11 +8,11 @@ app.use(express.json())
 
 app.use(express.urlencoded({ extended: false }))
 
-const tempelatePath = path.join(__dirname, '../tempelates')
+const tempelatePath = path.join(__dirname, '../views')
 const publicPath = path.join(__dirname, '../public')
 console.log(publicPath);
 
-app.set('view engine', 'hbs')
+app.set('view engine', 'ejs')
 app.set('views', tempelatePath)
 app.use(express.static(publicPath))
 
