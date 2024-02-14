@@ -45,6 +45,18 @@ app.get('/admin', (req, res) => {
     res.render('admin')
 });
 
+app.get('/payment',(req,res)=>{
+    res.render('payment')
+})
+
+
+// app.get("/get",(req,res)=>{
+//     LogInCollection.find()
+//     .then(logincollections=>res,json())
+//     .catch(err=>res.json(err));
+
+// })
+
 
 
 
