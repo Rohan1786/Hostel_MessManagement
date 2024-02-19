@@ -8,6 +8,21 @@ mongoose.connect("mongodb://127.0.0.1:27017/LoginFormPractice")
     console.log('failed to connect');
 })
 
+
+const paymentschema=new mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    amount:{
+        type:Number,
+        required:true
+    }
+});
 const logInSchema=new mongoose.Schema({
     name:{
         type:String,
@@ -24,5 +39,8 @@ const logInSchema=new mongoose.Schema({
 })
 
 const LogInCollection=new mongoose.model('LogInCollection',logInSchema)
-
-module.exports=LogInCollection
+const PaymentCollection=new mongoose.model('PaymentCollection',paymentschema);
+module.exports=
+{LogInCollection,
+    PaymentCollection
+}

@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* .tabs {
+    display: flex;
+    margin-bottom: 20px;
+} */
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* .tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+} */
+
+h2 {
+    color: #333;
+}
+
+/* Style the student details */
+#students {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Style the mess details */
+#mess {
+    background-color: #e6f7ff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Style the payment details */
+#payments {
+    background-color: #ffd699;
+    padding: 15px;
+    border-radius: 5px;
+}

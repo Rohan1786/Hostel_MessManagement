@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data from MongoDB</title>
+  <style>
+    body {
+      background-color: #f8f9fa; /* Light background color */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #007bff; /* Blue header color */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6; /* Light gray border color */
+    }
+
+    th {
+      background-color: #007bff; /* Blue header background color */
+      color: #ffffff; /* White header text color */
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2; /* Light gray background for even rows */
+    }
+  </style>
+</head>
+<body>
+  <h1>Data from MongoDB</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+       <!-- payment_details.ejs -->
+
+<!-- ... your HTML code ... -->
+
+<tbody>
+  <% paymentData.forEach(payment_details => { %>
+      <tr>
+          <td><%= payment_details.name %></td>
+          <td><%= payment_details.email %></td>
+          <td><%= payment_details.amount %></td>
+      </tr>
+  <% }) %>
+</tbody>
+
+<!-- ... the rest of your HTML code ... -->
+
+     
+    </tbody>
+  </table>
+</body>
+</html>

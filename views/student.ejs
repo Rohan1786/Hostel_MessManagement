@@ -1,0 +1,67 @@
+<!-- userTable.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Table</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4; /* Light background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #fff; /* White background for the table */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2; /* Light gray background for header cells */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternating row background color */
+        }
+    </style>
+</head>
+<body>
+    <h1>User Table</h1>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.password %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>

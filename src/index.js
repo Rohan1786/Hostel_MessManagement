@@ -2,7 +2,12 @@ const express = require("express")
 const path = require("path")
 const app = express()
 // const hbs = require("hbs")
-const LogInCollection = require("./mongo")
+// Your other file
+
+const { LogInCollection, PaymentCollection } = require("./mongo");
+
+// Now you can use LogInCollection and PaymentCollection in this file
+
 const { name } = require("ejs")
 const { error } = require("console")
 const port = process.env.PORT || 3000
@@ -57,42 +62,87 @@ app.get('/payment',(req,res)=>{
 
 // })
 
+app.post('/payment', async (req, res) => {
+    try {
+        const data = new PaymentCollection({
+            name: req.body.name,
+            email: req.body.email,
+            amount: req.body.amount
+        });
+
+        await data.save();
+
+        const paymentData = await PaymentCollection.find({ name: req.body.name, amount: req.body.amount });
+
+        if (paymentData.length > 0) {
+            res.render('payment_details', { paymentData });
+        } else {
+            res.send("Data not found in the database.");
+        }
+    } catch (error) {
+        res.send("Wrong inputs or an error occurred.");
+    }
+});
 
 
+
+// app.post('/signup', async (req, res) => {
+    
+//     const data = new LogInCollection({
+//         name: req.body.name,
+//         email:req.body.email,
+//         password: req.body.password
+       
+//     });
+//     await data.save();
+
+   
+    
+
+//     const checking = await LogInCollection.findOne({ name: req.body.name })
+
+//    try{
+//     if (checking.name === req.body.name && checking.password===req.body.password) {
+//         res.render('home')
+//     }
+//     else{
+//         await LogInCollection.insertMany([data])
+//     }
+//    }
+//    catch{
+//     res.send("wrong inputs")
+//    }
+
+//     res.status(201).render("home", {
+//         naming: req.body.name
+//     })
+// })
 
 app.post('/signup', async (req, res) => {
-    
     const data = new LogInCollection({
         name: req.body.name,
-        email:req.body.email,
+        email: req.body.email,
         password: req.body.password
-       
     });
+
     await data.save();
 
-    // const data = {
-    //     name: req.body.name,
-    //     password: req.body.password
-    // }
+    const users = await LogInCollection.find();
 
-    const checking = await LogInCollection.findOne({ name: req.body.name })
-
-   try{
-    if (checking.name === req.body.name && checking.password===req.body.password) {
-        res.render('home')
+    try {
+        if (users.some(user => user.name === req.body.name && user.password === req.body.password)) {
+            // res.render('home', { naming: req.body.name });
+            app.get("/student",(req,res)=>{
+                res.render('student', { users });
+            })
+            // res.render('student', { users });
+        } else {
+            res.render('student', { users });
+        }
+    } catch (error) {
+        res.send("An error occurred: " + error.message);
     }
-    else{
-        await LogInCollection.insertMany([data])
-    }
-   }
-   catch{
-    res.send("wrong inputs")
-   }
-
-    res.status(201).render("home", {
-        naming: req.body.name
-    })
-})
+});
 
 
 
@@ -124,41 +174,50 @@ app.post('/login', async (req, res) => {
 })
 
 
-// app.post('/admin', (req, res) => {
+app.post('/admin', (req, res) => {
 
-//     try {
+    try {
         
-//         // const check ={ name: "rohan" }
+        // const check ={ name: "rohan" }
 
-//         // if (check.password === "123") {
-//         //     res.status(201).render("home", { naming: `${'123'}+${name}` })
-//         // }
-//         const name=document.querySelector('#name');
-//         const pass=document.querySelector('#pass');
-//         if(name=="rohan"&&pass=="1234"){
-//             res.send("hello")
-//         }
+        // if (check.password === "123") {
+        //     res.status(201).render("home", { naming: `${'123'}+${name}` })
+        // }
+        const name=document.querySelector('#name');
+        const pass=document.querySelector('#pass');
+        if(name=="rohan"&&pass=="1234"){
+            res.send("hello")
+        }
 
-//         else {
-//             res.send("incorrect password")
+        else {
+            res.send("incorrect password")
             
-//         }
+        }
 
 
-//     }
+    }
     
-//     catch (e) {
+    catch (e) {
 
-//         res.render("wrong details");
+        res.render("wrong details");
         
 
-//     }
+    }
 
 
+})
+
+// app.get("/payment_details",(req,res)=>{
+//     res.render('payment_details')
 // })
 
-
+app.get("/admin_main",(req,res)=>{
+    res.render("admin_main")
+})
+// app.get("/student",(req,res)=>{
+//     res.render("student");
+// })
 
 app.listen(port, () => {
     console.log('port connected');
-})
+});
