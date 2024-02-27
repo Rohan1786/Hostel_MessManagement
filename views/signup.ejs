@@ -4,25 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <link rel="stylesheet" href="css/login.css">
-</head>
-<body>
-    
-<h1>Sign Up</h1>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/signup.css"> <!-- Link to an external CSS file for better organization -->
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    <form action="/signup" method="post" >
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            /* text-align: center; */
+        }
+
+        h1 {
+            color: #333;
+            
+        }
+
+        h3 {
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input.sub {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input.sub:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #007bff;
+            display: block;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body> <center>
+    <h1>Sign Up</h1>
+    <form action="/signup" method="post">
         <input placeholder="Name" name="name" type="text">
         <br>
-       
-          <input placeholder="email" name="email" type="text">
+        <input placeholder="Email" name="email" type="text">
         <br>
-         <input placeholder="Password" name="password" type="password">
+        <input placeholder="Password" name="password" type="password">
         <br>
         <input class="sub" type="submit">
-    </form>
-
-       <a href="/">Go back to login page</a>
-
+        <a href="/login">Go back to login page</a>
+    </form></center>
+    
 </body>
 </html>

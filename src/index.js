@@ -61,6 +61,17 @@ app.get('/payment',(req,res)=>{
 //     .catch(err=>res.json(err));
 
 // })
+app.get('/mess', async (req, res) => {
+    try {
+        const messId = req.params.id;
+        const mess = await MessCollection.findById(messId);
+        res.render('mess', { mess });
+    } 
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 app.post('/payment', async (req, res) => {
     try {
@@ -76,7 +87,8 @@ app.post('/payment', async (req, res) => {
 
         if (paymentData.length > 0) {
             res.render('payment_details', { paymentData });
-        } else {
+        } 
+        else {
             res.send("Data not found in the database.");
         }
     } catch (error) {
@@ -131,7 +143,7 @@ app.post('/signup', async (req, res) => {
 
     try {
         if (users.some(user => user.name === req.body.name && user.password === req.body.password)) {
-            // res.render('home', { naming: req.body.name });
+            res.render('home', { naming: req.body.name });
             app.get("/student",(req,res)=>{
                 res.render('student', { users });
             })
@@ -216,6 +228,9 @@ app.get("/admin_main",(req,res)=>{
 })
 // app.get("/student",(req,res)=>{
 //     res.render("student");
+// })
+// app.get("/mess",(req,res)=>{
+//     res.render("mess")
 // })
 
 app.listen(port, () => {

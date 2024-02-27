@@ -4,14 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/login.css">
+    <title>Home</title>
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Home</h1>
-    <h2>hello {{naming}}</h2>
-    <button><a href="/payment">Click here for payment</a></button>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Home</h1>
+                <h2>Hello <%= naming %></h2>
+                <button class="btn btn-primary"><a href="/payment" style="color: white; text-decoration: none;">Click here for payment</a></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <img src="image1.jpg" alt="Image 1" class="img-fluid">
+                <p>Some text or description related to Image 1.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="image2.jpg" alt="Image 2" class="img-fluid">
+                <p>Some text or description related to Image 2.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="image3.jpg" alt="Image 3" class="img-fluid">
+                <p>Some text or description related to Image 3.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <h2>Mess Timetable</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Breakfast</th>
+                            <th>Lunch</th>
+                            <th>Dinner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>Cereal and Milk</td>
+                            <td>Chicken Pasta</td>
+                            <td>Grilled Fish with Vegetables</td>
+                        </tr>
+                        <!-- Add more rows for each day and meal -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
