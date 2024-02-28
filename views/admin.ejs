@@ -6,9 +6,16 @@
     <title>Admin Login</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
+        
 
         form {
             max-width: 400px;
@@ -41,8 +48,8 @@
         }
     </style>
 </head>
-<body>
 
+<center>
     <h2>Admin Login</h2>
 
     <form id="adminLoginForm">
@@ -54,7 +61,7 @@
 
         <button type="button" onclick="authenticateAdmin()">Login</button>
     </form>
-
+</center>
     <script>
         function authenticateAdmin() {
             const username = document.getElementById('username').value;

@@ -1,10 +1,11 @@
 const express = require("express")
 const path = require("path")
-const app = express()
+const app = express();
+
 // const hbs = require("hbs")
 // Your other file
 
-const { LogInCollection, PaymentCollection } = require("./mongo");
+const { LogInCollection, PaymentCollection,MessCollection } = require("./mongo");
 
 // Now you can use LogInCollection and PaymentCollection in this file
 
@@ -30,8 +31,6 @@ app.use(express.static(publicPath))
 
 
 // hbs.registerPartials(partialPath)
-
-
 app.get('/signup', (req, res) => {
     res.render('signup')
 })
@@ -61,18 +60,85 @@ app.get('/payment',(req,res)=>{
 //     .catch(err=>res.json(err));
 
 // })
-app.get('/mess', async (req, res) => {
-    try {
-        const messId = req.params.id;
-        const mess = await MessCollection.findById(messId);
-        res.render('mess', { mess });
-    } 
-    catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
+// app.get('/messDetails', async (req, res) => {
+//     // try {
+//     //     const messDetails = await MessCollection.findone({ /* your query here */ }).exec();
+//     //     res.render('messDetails', { messDetails });
+//     //   } catch (error) {
+//     //     console.error('Error fetching mess details:', error);
+//     //     res.status(500).send('Internal Server Error');
+//     //   }
+//     });
+// Assuming you are using Express.js with EJS as the view engine
+app.get('/messDetails', (req, res) => {
+    res.render('messDetails', { messDetails: newMessDetails });
 });
 
+const newMessDetails = new MessCollection({
+    name: 'Swaryajya',
+    location: 'Belagaum',
+    timetable: {
+      monday: [{
+        breakfast: 'Monday Breakfast',
+        lunch: 'Monday Lunch',
+        dinner: 'Monday Dinner',
+      }],
+      tuesday: [{
+        breakfast: 'tuesday Breakfast',
+        lunch: 'tuesday Lunch',
+        dinner: 'tuesday Dinner',
+      }],
+      wednesday:[{
+        breakfast: 'wednesday Breakfast',
+        lunch: 'wednesday Lunch',
+        dinner: 'wednesday Dinner',
+      }],
+      thursday:[{
+        breakfast: 'thursday Breakfast',
+        lunch: 'thursday Lunch',
+        dinner: 'thursday Dinner',
+      }],
+      friday:[{
+        breakfast: 'friday Breakfast',
+        lunch: 'friday Lunch',
+        dinner: 'friday Dinner',
+      }],
+       saturday:
+       [{
+        breakfast: 'saturday Breakfast',
+        lunch: 'saturday Lunch',
+        dinner: 'saturday Dinner',
+      }],
+      sunday:[{
+        breakfast: 'sunday Breakfast',
+        lunch: 'sunday Lunch',
+        dinner: 'sunday Dinner',
+      }],
+      
+      // Repeat the same structure for other days
+    },
+  });
+  
+  newMessDetails.save()
+    .then(savedMess => {
+      console.log('Mess details saved successfully:', savedMess);
+    })
+    .catch(error => {
+      console.error('Error saving mess details:', error);
+    });
+
+    app.post('/update_mess_details', (req, res) => {
+        try {
+            const updatedMessDetails = req.body;
+    
+            // Assuming you have a method to update mess details in the database
+            updateMessDetailsInDatabase(updatedMessDetails);
+    
+            res.json({ success: true, message: 'Mess details updated successfully.' });
+        } catch (error) {
+            res.status(500).json({ success: false, message: 'Error updating mess details.' });
+        }
+    });
 app.post('/payment', async (req, res) => {
     try {
         const data = new PaymentCollection({
@@ -94,7 +160,32 @@ app.post('/payment', async (req, res) => {
     } catch (error) {
         res.send("Wrong inputs or an error occurred.");
     }
+
 });
+app.post("/payment",(req,res)=>{
+    try {
+        PaymentCollection({
+            name: req.body.name,
+            email: req.body.email,
+            amount: req.body.amount
+        });
+
+        
+
+        const paymentData =  PaymentCollection.find({ name: req.body.name, amount: req.body.amount });
+
+        if (paymentData.length > 0) {
+            res.render('payment_details', { paymentData });
+        } 
+        else {
+            res.send("Data not found in the database.");
+        }
+    }
+    catch (error) {
+        res.send("Wrong inputs or an error occurred.");
+    }
+});
+
 
 
 
@@ -161,10 +252,13 @@ app.post('/signup', async (req, res) => {
 app.post('/login', async (req, res) => {
 
     try {
-        const check = await LogInCollection.findOne({ name: req.body.name })
+        const users = await LogInCollection.findOne({ name: req.body.name })
 
-        if (check.password === req.body.password) {
-            res.status(201).render("home", { naming: `${req.body.password}+${req.body.name}` })
+        if (users.password === req.body.password) {
+            res.status(201).render("home", { naming: `${req.body.name}` })
+            app.get("/student",(req,res)=>{
+                res.render('student', { users });
+            })
         }
 
         else {
@@ -233,6 +327,32 @@ app.get("/admin_main",(req,res)=>{
 //     res.render("mess")
 // })
 
+app.get("/payment_details",(req,res)=>{
+    try {
+        PaymentCollection({
+            name: req.body.name,
+            email: req.body.email,
+            amount: req.body.amount
+        });
+
+        
+
+        const paymentData =  PaymentCollection.find({ name: req.body.name, amount: req.body.amount });
+
+        if (paymentData.length > 0) {
+            res.render('payment_details', { paymentData });
+        } 
+        else {
+            res.send("Data not found in the database.");
+        }
+    }
+    catch (error) {
+        res.send("Wrong inputs or an error occurred.");
+    }
+})
+app.get("/navbar",(req,res)=>{
+    res.render('navbar')
+})
 app.listen(port, () => {
     console.log('port connected');
 });

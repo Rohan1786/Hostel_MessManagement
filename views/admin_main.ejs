@@ -1,3 +1,5 @@
+<!-- admin_page.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,30 +8,92 @@
     <link rel="stylesheet" href="/css/admin_main.css">
     <title>Admin Page</title>
     <script src="/javascript/students.js" defer></script>
-</head>
-<body>
+    <script src="navbar.ejs"></script>
+    <style>
+    body {
+    
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        height: 100%;
+    }
+    
+    html {
+        height: 100%;
+    }
+    
+    .header {
+        background-color: rgba(255, 165, 0, 0.5); /* Use rgba for color with opacity */
+        border: 2px solid rgb(216, 155, 24);
+        padding: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .logo img {
+        max-height: 100px;
+    }
+    
+    .nav-links a {
+                padding: 10px;
+                border: 2px solid rgb(214, 177, 10);
+                background-color: rgb(238, 214, 0);
+                text-decoration: none;
+                color: rgb(170, 78, 16);
+                margin-left: 10px;
+                transition: background-color 0.3s ease, border-radius 0.3s ease; /* Smooth transition on background-color and border-radius */
+                border-radius: 40%; /* Make it circular */
+                display: inline-block; /* Ensure inline-block display to make border-radius work */
+            }
+    
+            .nav-links a:hover {
+                background-color: rgb(189, 129, 19);
+            }
+            h1{
+                text-align: center;
+                color: brown;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="logo">
+                <img src="/images/image2.jpeg" alt="Logo">
+            </div>
+    
+            <div class="nav-links">
+                <a href="/admin">ADMIN</a>
+                <a href="/signup">REGISTER</a>
+                <a href="/login" class="login">LOGIN</a>
+            </div>
+        </div>
+   <h1>Your in a Admin Page</h1>
+
     <div id="app">
         <div id="students" class="tab-content">
-           
-            <button id="hi"onclick="showTab()">students Details</button>
-           
+            <h2>Students Details</h2>
+            <!-- Add images or other content related to students -->
+            <button id="hi" onclick="showTab1()">View Students</button>
         </div>
 
-        <div id="payment" class="tab-content">
-           
-            <button id="hi"onclick="showTab1()">payment Details</button>
-           
+        <div id="students" class="tab-content">
+            <h2>Payment Details</h2>
+            <!-- Add images or other content related to payments -->
+            <button id="hi" onclick="showTab2()">View Payments</button>
         </div>
 
-        <div id="mess" class="tab-content">
-           
-            <button id="hi"onclick="showTab()">Mess Details</button>
-           
+        <div id="students" class="tab-content">
+            <h2>Mess Details</h2>
+            <p>Welcome to the Mess Management System. Here, you can manage and view information about the mess.</p>
+            <!-- Add images or other content related to mess management -->
+            <button id="hi" onclick="showTab3()">View Mess Details</button>
         </div>
-
-       
     </div>
 
-   
+    <!-- Add any additional content or styling as needed -->
+
 </body>
 </html>

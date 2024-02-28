@@ -38,11 +38,120 @@ const logInSchema=new mongoose.Schema({
         type:String,
         required:true
     }
-})
+});
+
+const messDetailsSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    location: { type: String, required: true },
+    timetable: {
+        monday: [{
+            breakfast:{
+                type:String,
+                required:true
+            },
+            lunch:{
+                type:String,
+                required:true
+            },
+            dinner:{
+                type:String,
+                required:true
+            }
+        }],
+        tuesday: [{
+            breakfast:{
+                type:String,
+                required:true
+            },
+            lunch:{
+                type:String,
+                required:true
+            },
+            dinner:{
+                type:String,
+                required:true
+            }
+        }],
+        wednesday: [{
+            breakfast:{
+                type:String,
+                required:true
+            },
+            lunch:{
+                type:String,
+                required:true
+            },
+            dinner:{
+                type:String,
+                required:true
+            }
+        }],
+        thursday: [{
+            breakfast:{
+                type:String,
+                required:true
+            },
+            lunch:{
+                type:String,
+                required:true
+            },
+            dinner:{
+                type:String,
+                required:true
+            }
+        }],
+        friday: [{
+            breakfast:{
+                type:String,
+                required:true
+            },
+            lunch:{
+                type:String,
+                required:true
+            },
+            dinner:{
+                type:String,
+                required:true
+            }
+        }],
+        saturday:[{
+            breakfast:{
+                type:String,
+                required:true
+            },
+            lunch:{
+                type:String,
+                required:true
+            },
+            dinner:{
+                type:String,
+                required:true
+            }
+        }],
+        sunday: [{
+            breakfast:{
+                type:String,
+                required:true
+            },
+            lunch:{
+                type:String,
+                required:true
+            },
+            dinner:{
+                type:String,
+                required:true
+            }
+        }],
+    }
+});
+
 
 const LogInCollection=new mongoose.model('LogInCollection',logInSchema)
 const PaymentCollection=new mongoose.model('PaymentCollection',paymentschema);
+const MessCollection=new mongoose.model('MessCollection',messDetailsSchema)
 module.exports=
-{LogInCollection,
-    PaymentCollection
+{
+    LogInCollection,
+    PaymentCollection,
+    MessCollection
 }

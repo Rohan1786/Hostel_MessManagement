@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <!-- Link Bootstrap CSS -->
+    <script src="/javascript/home.js" defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
     <style>
-        body {
+
+        /* body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-        }
+        } */
 
         h1, h2 {
             text-align: center;
@@ -24,38 +27,139 @@
         button {
             display: block;
             margin: 20px auto;
+        } 
+        body {
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+.header {
+    background-color: rgba(255, 165, 0, 0.5); /* Use rgba for color with opacity */
+    border: 2px solid rgb(216, 155, 24);
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    max-height: 100px;
+}
+
+.nav-links a {
+            padding: 10px;
+            border: 2px solid rgb(214, 177, 10);
+            background-color: rgb(238, 214, 0);
+            text-decoration: none;
+            color: rgb(170, 78, 16);
+            margin-left: 10px;
+            transition: background-color 0.3s ease, border-radius 0.3s ease; /* Smooth transition on background-color and border-radius */
+            border-radius: 40%; /* Make it circular */
+            display: inline-block; /* Ensure inline-block display to make border-radius work */
         }
+
+        .nav-links a:hover {
+            background-color: rgb(189, 129, 19);
+        }
+       .row{
+        padding: 52px;
+       }
+       .about {
+    text-align: center;
+    padding: 20px;
+    background-color: #080808;
+    color: aliceblue;
+}
+
+.description {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.social-icons i {
+    font-size: 24px;
+    display: flex;
+    align-items: center; /* Align the image vertically within the container */
+}
+
+.social-icons img {
+    height: 24px; /* Set the desired height for the images */
+    width: auto; /* Allow the width to adjust proportionally based on the height */
+}
+.h2{
+    font-weight:bold;
+}
+
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="logo">
+            <img src="/images/image2.jpeg" alt="Logo">
+        </div>
 
+        <div class="nav-links">
+            <a href="/admin">ADMIN</a>
+            <a href="/signup">REGISTER</a>
+            <a href="/login" class="login">LOGIN</a>
+        </div>
+    </div>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Home</h1>
-                <h2>Hello <%= naming %></h2>
-                <button class="btn btn-primary"><a href="/payment" style="color: white; text-decoration: none;">Click here for payment</a></button>
+            
+                <h2 class="h2">Hello <%= naming %></h2>
+                <a href="/payment" class="btn btn-primary" style="color: white; text-decoration: none;">Click here for payment</a>
+
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-4">
-                <img src="image1.jpg" alt="Image 1" class="img-fluid">
-                <p>Some text or description related to Image 1.</p>
+                <img src="/images/image1.png" alt="Image 1" class="img-fluid">
+                <p>
+                    Welcome to the Mess Center, where every bite is a burst of deliciousness! 🌟 Our menu is a celebration of flavors, 
+                    crafted with passion and precision. 
+                    Join us for a taste experience like no other! 🍽️🤤</p>
             </div>
             <div class="col-md-4">
-                <img src="image2.jpg" alt="Image 2" class="img-fluid">
-                <p>Some text or description related to Image 2.</p>
+                <img src="/images/image2.jpeg" alt="Image 2" class="img-fluid">
+                <p>Welcome to Swarajya Mess! 🍲 A paradise for foodies seeking deliciousness.
+                     From sizzling starters to divine desserts, our menu is a flavor-packed journey for your taste buds. 
+                     🌶️🍤🍰 Join us for a culinary adventure where each bite is a celebration of taste and authenticity. 
+                    🎉👩‍🍳 Swarajya Mess – where food dreams come true! 🌟🍴</p>
             </div>
             <div class="col-md-4">
-                <img src="image3.jpg" alt="Image 3" class="img-fluid">
-                <p>Some text or description related to Image 3.</p>
+                <img src="/images/image3.jpeg" alt="Image 3" class="img-fluid">
+                <p>Welcome to Swarajya Mess! 🌮🍜 Prepare your taste buds for a delightful adventure through our menu of tasty delights.
+                     From savory tacos to flavorful noodles, we promise a culinary experience that will leave you craving for more. 
+                    🍲🌶️ Come, indulge in the joy of deliciousness at Swarajya Mess! 🌟🍴</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 mt-4">
-                <h2>Mess Timetable</h2>
+                <h2 class="h2">Mess Time Table</h2>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -78,7 +182,42 @@
             </div>
         </div>
     </div>
+    <center>
+    <div class="col-md-4">
+        <img src="/images/worker1.jpg" alt="Image 3" class="img-fluid">
+        <p>
+            Welcome to Swarajya Mess Kitchen! 🌟 Enjoy delicious, hygienic meals crafted with care. 
+            👩‍🍳🍲 Your go-to destination for clean, flavorful delights! 🍴✨</p>
+    </div></center>
 
+            <section class="about">
+                <div class="description">
+                    <h2>About Us</h2>
+                    <p>Welcome to our wonderful space! We take pride in delivering high-quality services.</p>
+                    <p>Follow us on social media for the latest updates:</p>
+                    <p>Developers : Rohan Pawar(Backend)
+                                    Samarth U K (frontend)
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" target="_blank">
+                            <i class="fab fa-facebook">
+                                <img src="./images/facebook.png" alt="Facebook Logo">
+                            </i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-twitter">
+                                <!-- You can add a Twitter logo here if needed -->
+                                <img src="./images/twitter.png" alt="Instagram Logo">
+                            </i>
+                        </a>
+                        <a href=https://www.facebook.com"" target="https://www.instagram.com">
+                            <i class="fab fa-instagram">
+                                <img src="./images/insta.jpeg" alt="Instagram Logo">
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </section>
     <!-- Link Bootstrap JS and Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
