@@ -67,6 +67,7 @@
             <th>Breakfast</th>
             <th>Lunch</th>
             <th>Dinner</th>
+            <th>edit/add</th>
         </tr>
         <% Object.keys(messDetails.timetable).forEach(day => { %>
             <tr>
@@ -92,6 +93,7 @@
                         N/A
                     <% } %>
                 </td>
+                <td><button>edit/add</button></td>
             </tr>
         <% }); %>
         

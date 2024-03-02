@@ -79,40 +79,40 @@ const newMessDetails = new MessCollection({
     location: 'Belagaum',
     timetable: {
       monday: [{
-        breakfast: 'Monday Breakfast',
-        lunch: 'Monday Lunch',
-        dinner: 'Monday Dinner',
+        breakfast: 'Fried Rice with tea/copy/milk',
+        lunch: 'VegThali',
+        dinner: 'VegThali with banana/egg',
       }],
       tuesday: [{
-        breakfast: 'tuesday Breakfast',
+        breakfast: 'Masala Dosa with tea/copy/milk',
         lunch: 'tuesday Lunch',
-        dinner: 'tuesday Dinner',
+        dinner: 'Veg Thali with banana/egg',
       }],
       wednesday:[{
-        breakfast: 'wednesday Breakfast',
-        lunch: 'wednesday Lunch',
-        dinner: 'wednesday Dinner',
+        breakfast: 'Idli Sambhar with tea/copy/milk',
+        lunch: 'Non-Veg Thali/Veg Thali',
+        dinner: 'Veg Thali with banana/egg',
       }],
       thursday:[{
-        breakfast: 'thursday Breakfast',
-        lunch: 'thursday Lunch',
-        dinner: 'thursday Dinner',
+        breakfast: 'Pulav with tea/copy/milk',
+        lunch: 'Paratha Veg Thali',
+        dinner: 'Veg Thali with banana/egg',
       }],
       friday:[{
-        breakfast: 'friday Breakfast',
-        lunch: 'friday Lunch',
-        dinner: 'friday Dinner',
+        breakfast: 'Puri Kurma with tea/copy/milk',
+        lunch: 'Curd Rice',
+        dinner: 'Veg Thali with banana/egg',
       }],
        saturday:
        [{
-        breakfast: 'saturday Breakfast',
-        lunch: 'saturday Lunch',
-        dinner: 'saturday Dinner',
+        breakfast: 'Vada Sambhar with tea/copy/milk',
+        lunch: 'Veg Thali',
+        dinner: 'Veg Thali with banana/egg',
       }],
       sunday:[{
-        breakfast: 'sunday Breakfast',
-        lunch: 'sunday Lunch',
-        dinner: 'sunday Dinner',
+        breakfast: 'Pav Bhaji with tea/copy/milk',
+        lunch: 'Veg Thali',
+        dinner: 'Non-Veg Thali/Veg Thali',
       }],
       
       // Repeat the same structure for other days
@@ -139,6 +139,7 @@ const newMessDetails = new MessCollection({
             res.status(500).json({ success: false, message: 'Error updating mess details.' });
         }
     });
+
 app.post('/payment', async (req, res) => {
     try {
         const data = new PaymentCollection({
@@ -152,6 +153,7 @@ app.post('/payment', async (req, res) => {
         const paymentData = await PaymentCollection.find({ name: req.body.name, amount: req.body.amount });
 
         if (paymentData.length > 0) {
+            
             res.render('payment_details', { paymentData });
         } 
         else {
@@ -161,29 +163,6 @@ app.post('/payment', async (req, res) => {
         res.send("Wrong inputs or an error occurred.");
     }
 
-});
-app.post("/payment",(req,res)=>{
-    try {
-        PaymentCollection({
-            name: req.body.name,
-            email: req.body.email,
-            amount: req.body.amount
-        });
-
-        
-
-        const paymentData =  PaymentCollection.find({ name: req.body.name, amount: req.body.amount });
-
-        if (paymentData.length > 0) {
-            res.render('payment_details', { paymentData });
-        } 
-        else {
-            res.send("Data not found in the database.");
-        }
-    }
-    catch (error) {
-        res.send("Wrong inputs or an error occurred.");
-    }
 });
 
 

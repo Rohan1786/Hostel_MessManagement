@@ -13,6 +13,7 @@
     padding: 0;
     font-family: Arial, sans-serif;
     height: 100%;
+    color: antiquewhite;
 }
 
 html {
@@ -47,6 +48,34 @@ html {
         .nav-links a:hover {
             background-color: rgb(189, 129, 19);
         }
+        div .d{
+            text-align: center;
+            margin-top: 50px;
+            animation: fadeIn 1s ease-out; /* Apply the animation to the div */
+        }
+
+        h1 p {
+            
+            opacity: 0; /* Initially set opacity to 0 for fade-in effect */
+        }
+h1{
+    text-align: center;
+}
+.d p{
+    color: white;
+    font-weight: bold;
+}
+        /* Animation effect */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -61,5 +90,12 @@ html {
             <a href="/login" class="login">LOGIN</a>
         </div>
     </div>
+   
+    <div class="d">
+        <h1>Welcome to the</h1><h1 style="color: rgb(241, 85, 12);"> Swarajya Mess</h1>
+        <p>🥗 "Fresh, crisp, and bursting with goodness! Our salads are a delightful blend of colors and flavors. 
+            Healthy never tasted so good! 🥑🍅</p>
+    </div>
+
 </body>
 </html>

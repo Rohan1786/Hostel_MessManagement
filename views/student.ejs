@@ -43,9 +43,13 @@
         tr:nth-child(even) {
             background-color: #f9f9f9; /* Alternating row background color */
         }
+        button{
+            background-color: aqua;
+        }
     </style>
 </head>
 <body>
+    <h1>ONLY ADMIN CAN MODIFY</h1>
     <h1>User Table</h1>
     
     <table>
@@ -53,6 +57,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Password</th>
+            <th>DELETE</th>
+            <th>ADD</th>
         </tr>
         
         <% users.forEach(user => { %>
@@ -60,6 +66,8 @@
                 <td><%= user.name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.password %></td>
+                <td><button>DELETE</button></td>
+                <td> <button>ADD</button></td>
             </tr>
         <% }); %>
     </table>
